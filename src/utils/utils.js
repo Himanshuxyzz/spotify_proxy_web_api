@@ -16,7 +16,7 @@ const getAccessToken = async () => {
     },
   };
 
-  if (cacheData && cacheTime <= Date.now() - 3900 * 1000) {
+  if (cacheData && cacheTime > Date.now() - 3900 * 1000) {
     return cacheData;
   }
 
