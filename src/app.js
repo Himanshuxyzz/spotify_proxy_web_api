@@ -5,7 +5,6 @@ const express = require("express");
 const cors = require("cors");
 const api = require("./api");
 const helmet = require("helmet");
-const morgan = require("morgan");
 
 const app = express();
 app.use(
@@ -17,16 +16,16 @@ app.use(
   })
 );
 app.use(helmet());
-app.use(morgan("combined"));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+app.set("trust proxy", 1);
+// app.get("/ip", (request, response) => response.send(request.ip));
 
 app.get("/", async (req, res) => {
-  res.sendStatus(200);
   res.json({
-    message: "Spotify proxy server",
+    message: "Spotify proxy server api",
     routes: {
-      "to get access token": "/spotify",
+      "to get access spotify routes": "/api/v1",
     },
   });
 });
