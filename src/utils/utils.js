@@ -22,7 +22,7 @@ const getAccessToken = async () => {
 
   try {
     const response = await axios(
-      `https://accounts.spotify.com/api/token?${querystring.stringify({
+      `${process.env.GET_TOKEN_ENDPOINT}?${querystring.stringify({
         grant_type: "refresh_token",
         refresh_token: process.env.REFRESH_TOKEN,
       })}`,
@@ -95,6 +95,8 @@ const getUserTopTracks = async () => {
     console.log(err.response.statusText);
   }
 };
+
+// console.log(cacheData, cacheTime);
 
 module.exports = {
   getCurrentPlayingItem,
