@@ -5,16 +5,10 @@ const express = require("express");
 const cors = require("cors");
 const api = require("./api");
 const helmet = require("helmet");
-
 const app = express();
-const allowedOrigins = [
-  `${process.env.DEPLOYED_URL}`,
-  `${process.env.ORIGIN_URL}`,
-];
-// console.log(allowedOrigins);
 app.use(
   cors({
-    origin: `${allowedOrigins[0]}`,
+    origin: [process.env.DEPLOYED_URL, process.env.ORIGIN_URL],
     methods: ["GET"],
     allowedHeaders: ["Content-Type", "Authorization"],
     maxAge: 600,
