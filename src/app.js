@@ -7,9 +7,14 @@ const api = require("./api");
 const helmet = require("helmet");
 
 const app = express();
+const allowedOrigins = [
+  `${process.env.DEPLOYED_URL}`,
+  `${process.env.ORIGIN_URL}`,
+];
+// console.log(allowedOrigins);
 app.use(
   cors({
-    origin: `${process.env.ORIGIN_URL || process.env.DEPLOYED_URL}`,
+    origin: `${allowedOrigins[0]}`,
     methods: ["GET"],
     allowedHeaders: ["Content-Type", "Authorization"],
     maxAge: 600,

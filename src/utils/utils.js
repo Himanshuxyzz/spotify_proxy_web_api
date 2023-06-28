@@ -59,7 +59,6 @@ const getCurrentPlaying = async () => {
 
 const getCurrentPlayingItem = async () => {
   const song = await getCurrentPlaying();
-  // console.log(song);
   const albumImg = song?.item?.album?.images[0]?.url;
   const artist = song?.item?.artists?.map((artist) => artist?.name).join(",");
   const songName = song?.item?.name;
@@ -96,7 +95,6 @@ const getUserTopTracks = async () => {
   }
 };
 
-// console.log(cacheData, cacheTime);
 
 module.exports = {
   getCurrentPlayingItem,
