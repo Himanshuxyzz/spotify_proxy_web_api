@@ -23,7 +23,7 @@ app.set("trust proxy", 1);
 
 app.get("/", async (req, res) => {
   res.json({
-    message: "Spotify proxy server api",
+    message: "Welcome to spotify proxy server api",
     routes: {
       "to get access spotify routes": "/api/v1",
     },
